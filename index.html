@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Birthday present 🎁</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div id="particleBackground"></div>
+
+    <h1>🎁 Your BIRTHDAY Present ✨</h1>
+
+    <button id="openGiftButton" onclick="openGift()">Open Gift 🎁</button>
+
+    <div id="giftMessage" class="hidden">
+
+        <h2>🎉 Surprise! 🎉</h2>
+
+        <p id="recipientText"></p>
+
+        <p> A special gift just for you 💝</p>
+
+        <div id="giftArea">
+
+            <!-- MINI GIFTS -->
+            <div id="extraGifts">
+
+                <div class="miniGiftBox">
+
+                    <div class="miniGift">🎁</div>
+
+                        <button class="miniGiftButton" id="photoButton">
+                            Open!
+                        </button>
+
+                </div>
+
+                <div class="miniGiftBox">
+
+                    <div class="miniGift">🎁</div>
+
+                    <button class="miniGiftButton" id="heartButton" onclick="openHeart(event)">
+                        Open!
+                    </button>
+
+                </div>    
+
+                <div id="heartPopup">
+
+                    <div class="heartCard">
+
+                        <div class="heartGrid">
+
+                            <div class="heartShape"></div>
+                            <div class="heartShape"></div>
+                            <div class="heartShape"></div>
+                            <div class="heartShape"></div>
+                            <div class="heartShape"></div>
+                            <div class="heartShape"></div>
+                            <div class="heartShape"></div>
+                            <div class="heartShape"></div>  
+                            <div class="heartShape"></div>
+                            <div class="heartShape"></div>
+                            <div class="heartShape"></div>
+                            <div class="heartShape"></div>
+                            <div class="heartShape"></div>
+                            <div class="heartShape"></div>
+                            <div class="heartShape"></div>
+                            <div class="heartShape"></div>
+
+
+                        </div>
+
+                    
+
+                    <p> For My SweetiePie 🫂❣️ </p>
+
+                    <p1> 16 hearts for your 16th Birthday ! 💖 </p1>
+
+                    <p2> Happiesttt Birthday My Twin ! 🫶🎀 </p2>
+                 
+                </div>   
+
+            </div>
+
+           
+
+            <div class="miniGiftBox">
+
+                <div class="miniGift">🎁</div>
+                    
+                <button class="miniGiftButton" id="balloonButton">
+                    Open!
+                </button>
+
+            </div>
+
+            <div class="miniGiftBox">
+
+                <div class="miniGift">🎁</div>
+
+                <button class="miniGiftButton" id="fourthGiftButton">
+                    Open!
+                </button>
+
+                <div id="letterBackdrop"></div>
+
+                <div class="fourthGiftBox" id="fourthLetter">
+
+                    <div class="paperReveal" id="paperReveal">
+
+                        
+                        <p id="letterLine1">Mine Cute Princess</p>
+                        <p id="letterLine2">Dear Blueberry ,</p>
+                        <p id="letterLine3"> TEXT </p>
+                        <p id="letterLine4">~ Golden Boy</p>
+
+                    </div>
+
+                    <img src="Flower_Img2.png" class="letterBouquet" alt="Flower Bouquet">
+
+                    <img src="Flower_Img3.png" class="letterFlowers" alt="Letter Flowers">
+
+
+                    <div class="paperRoll"></div>
+
+                </div> <!-- End of fourthletter -->
+
+                <button id="unrollingLetterButton" class="unrollLetterButton">
+
+                    💌Open It !
+
+                </button>
+
+            </div>
+
+            <div class="miniGiftBox">
+
+                <div class="miniGift">🎁</div>
+
+                <button class="miniGiftButton" id="fifthGiftButton">
+                    Open!
+                </button>
+
+                <div class="fifthMessageBox" id="fifthMessageBox">
+
+                    <svg id="writingSvg"
+                          viewBox="0 0 300 100"
+                          aria-label="Name being handwritten">
+
+                          <g id="writingPaths"></g> 
+
+                    </svg>  
+                    
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- BALLOON POPUP -->
+
+        <div id="balloonPopup" class="balloonPopup">
+
+            <p class="balloonPopupInstruction">
+
+                🎈 Pop the Balloons! 🎈
+
+            </p>
+
+            <div class="balloonArea">
+
+                <div class="balloon balloonOne" data-message=" TEXT 💌">🎈
+
+
+                     <svg class="balloonString" viewBox="0 0 20 70">
+
+                        <path d="M10 0 C2 18, 22 48, 10 90"></path>
+
+                    </svg>
+
+                </div>
+
+                <div class="balloon balloonTwo" data-message=" TEXT 💌">🎈
+
+        
+
+                    <svg class="balloonString" viewBox="0 0 20 70">
+
+                        <path d="M10 0 C2 18, 22 48, 10 90"></path>
+
+                    </svg>
+
+                </div>
+
+                <div class="balloon balloonThree" data-message=" TEXT 💌">🎈
+
+               
+
+                    <svg class="balloonString" viewBox="0 0 20 70">
+
+                        <path d="M10 0 C2 18, 22 48, 10 90"></path>
+
+                    </svg>
+
+                </div>
+          
+                <div class="balloon balloonFour" data-message=" TEXT 💌">🎈
+
+                    <svg class="balloonString" viewBox="0 0 20 70">
+
+                        <path d="M10 0 C2 18, 22 48, 10 90"></path>
+
+                    </svg>
+
+                </div>
+
+                <div class="balloon balloonFive" data-message=" TEXT 💌">🎈
+
+                 
+
+                    <svg class="balloonString" viewBox="0 0 20 70">
+
+                        <path d="M10 0 C2 18, 22 48, 10 90"></path>
+
+                    </svg>
+
+                </div>
+                
+            </div>
+
+        </div>
+
+            <!-- PHOTO POPUP -->
+            <div id="photoPopup" class="photoPopup">
+
+                <div class="photoGiftCard">
+
+                    <div class="photoGrid">
+
+                        <div class="photoFrame photoOne">
+
+                            <img src="Img1.jpg" alt="Photo 1">
+                            <span class="photoHeart">💝</span>
+                            <span class="photoSparkle">✨</span>
+
+                        </div>
+
+                        <div class="photoFrame photoTwo">
+
+                            <img src="Img2.jpg" alt="Photo 2">
+                            <span class="photoHeart">🎀</span>
+                            <span class="photoSparkle">🔥</span>
+
+                        </div>
+
+                        <div class="photoFrame photoThree">
+
+                            <img src="Img3.jpg" alt="photo 3">
+                            <span class="photoHeart">🫂</span> 
+                            <span class="photoSparkle">💞</span>
+
+                        </div>
+
+                        <div class="photoFrame photoFour">
+
+                            <img src="Img4.jpg" alt="photo 4">
+                            <span class="photoHeart">💗</span> 
+                            <span class="photoSparkle">💌</span>
+
+                        </div>
+
+                    </div>
+
+                    <p class="photoText">
+                        A little Reminder of your Stunning 💖 & Beautiful Looks 💘
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vivus@0.4.6/dist/vivus.min.js"></script>
+
+    <script src="script.js"></script>   
+
+</body>
+</html>

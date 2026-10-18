@@ -1,0 +1,2396 @@
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    font-family: Arial, sans-serif;
+
+    background: linear-gradient(
+
+    135deg,
+    #080018,
+    #160b3d,
+    #05000f,
+    #10052d
+
+    );
+
+    background-size: 300% 300%;
+    animation: darkBackground 12s ease-in-out infinite;
+
+    text-align: center;
+}
+
+@keyframes darkBackground {
+
+    0% {
+
+        background-position: 0% 50%;
+
+    }
+
+    50% {
+
+        background-position: 100% 50%;
+
+    }
+
+    100% {
+
+        background-position: 0% 50%;
+
+    }
+
+}
+
+@keyframes cardGlow {
+
+    0%, 100% {
+        box-shadow:
+            0 0 15px rgba(120, 80, 255, 0.25),
+            0 0 35px rgba(80, 50, 200, 0.30);
+
+    }
+
+    50% {
+        box-shadow:
+            0 0 22px rgba(120, 80, 255, 0.48),
+            0 0 50px rgba(80, 50, 200, 0.30);
+
+    }
+
+}
+
+h1 {
+    color: #e1dbdb;
+    font-size: 40px;
+}
+
+p {
+    color: #f3eded;
+    font-size: 20px;
+}
+
+button {
+    margin-top: 20px;
+
+    padding: 15px 30px;
+
+    border: none;
+    border-radius: 15px;
+
+    background: #4ea6c8;
+    color: white;
+
+    font-size: 20px;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+.hidden {
+     
+    display: none;
+
+}
+
+#giftMessage {
+
+    margin-top: 30px;
+    padding: 25px;
+    background: rgb(254, 252, 252);
+    border-radius: 20px;
+    animation: popIn 0.8s ease, cardGlow 4s ease-in-out infinite;
+
+}
+
+#giftMessage h2 {
+
+    color: #f3d9ff;
+
+}      
+
+@keyframes popIn {
+    
+    0% {
+
+        transform: scale(0.);
+        opacity: 0;
+
+    }
+
+    70% {
+  
+        transform: scale(1.08);
+        opacity: 1;
+
+    }
+    
+    100%{
+        transform: scale(1);
+        opacity: 1;
+
+    }
+
+}
+
+#giftMessage {
+
+    width: 350px;
+    text-align: center;
+    background: rgba(39, 21, 174, 0.982);
+    padding: 30px;
+    border-radius: 20px;
+
+    box-shadow: 
+        0 0 15px rgba(120, 80, 255, 0.25),
+        0 0 35px rgba(80, 50, 200, 0.18),
+        0 18px 45px rgba(0, 0, 0, 0.35);
+
+    animation: popIn 0.8s ease, cardGlow 4s ease-in-out infinite;
+
+}
+
+.confetti-piece {
+
+    position: fixed;
+    top: 0;
+    font-size: 30px;
+    z-index: 9999;
+    animation: confettieFall 3s ease-out forwards;
+
+}
+
+@keyframes confettieFall {
+    
+    from {
+
+      
+        transform: translate(0, 0) rotate(0deg);
+        opacity: 0;
+
+        
+    }
+
+    to {
+
+        transform: translate(var(--moveX), 100vh) rotate(720deg);
+        opacity: 0;
+        
+    }
+
+}
+
+.miniGift {
+
+    font-size: 50px;
+    opacity: 0;
+    transform: scale(0.5);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    
+    animation: giftPulse 1.2s ease-in-out infinite !important;
+
+}
+
+.miniGiftBox:nth-of-type(1) .miniGift {
+
+    animation-delay: 1s;
+
+}
+
+.miniGiftBox:nth-of-type(2) .miniGift {
+
+    animation-delay: 1.4s;
+
+}
+
+.miniGiftBox:nth-of-type(3) .miniGift {
+
+    animation-delay: 1.8s;
+
+}
+
+#giftMessage:not(.hidden) .miniGift {
+
+    opacity: 1;
+    transform: scale(1);
+    animation: miniGiftPop 0.6s ease forwards;
+
+}
+
+#giftMessage:not(.hidden) .miniGiftButton {
+
+    opacity: 1;
+    visibility: visible;
+
+}
+
+.miniGift:nth-child(1) {
+
+    animation-delay: 0.2s;
+
+}
+
+.miniGift:nth-child(2) {
+
+    animation-delay: 0.4s;
+
+}
+
+.miniGift:nth-child(3) {
+
+    animation-delay: 0.6s;
+
+}
+
+@keyframes miniGiftPop {
+
+    0% {
+
+        transform: scale(0.5);
+        opacity: 0;
+
+    }
+
+    70% {
+
+        transform: scale(1.15);
+        opacity: 0;
+
+    }
+
+    100% {
+
+        transform: scale(1);
+        opacity: 1;
+
+    }
+
+}
+
+#middleGift {
+
+    cursor: pointer;
+
+}
+
+.photoPopup {
+
+    position: fixed;
+    inset: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+
+}
+
+.photoPopup img {
+
+    width: 300px;
+    max-width: 80%;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    display: block;
+
+}
+
+.miniGiftBox {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 80px;
+    min-width: 80px;
+    flex: 0 0 80px;
+    position: relative;
+  
+}
+
+.miniGiftButton {
+
+    margin-top: 5px;
+    padding: 7px 16px;
+    border: none;
+
+    border-radius: 5px;
+    background: linear-gradient(135deg, #6d5dfc, #8b5cf6);
+    box-shadow:
+        0 0 8px rgba(255, 100, 180, 0.25),
+        0 0 18px rgba(120, 80, 255, 0.15);
+
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: all 0.25s ease;
+
+    text-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
+
+    animation: buttonGlow 3s ease-in-out infinite;
+
+} 
+
+.miniGiftButton:hover {
+    box-shadow:
+
+        0 0 12px rgba(255, 100, 180, 0.45),
+        0 0 25px rgba(120, 80, 255, 0.30);
+
+    transform: translateY(-2.5px);  
+    
+    background: linear-gradient(135deg, #806dff, #a06bff);
+
+}
+
+@keyframes buttonGlow {
+
+    0%, 100% {
+
+        box-shadow:
+            0 0 8px rgba(255, 100, 180, 0.25),
+            0 0 18px rgba(120, 80, 255, 0.15);
+
+    }
+
+    50% {
+
+        box-shadow:
+            0 0 12px rgba(255, 100, 180, 0.4),
+            0 0 25px rgba(120, 80, 255, 0.3);
+
+    }
+    
+}
+
+.miniGiftButton:active {
+
+    transform: translateY(1px) scale(0.97);
+
+}
+
+#photoButton {
+
+    width: 65px;
+    height: 30px;
+
+    padding: 6px 12px;
+
+    margin-top: 5px;
+
+}
+ 
+#giftArea {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 30px;
+    margin-top: 25px;
+
+}
+
+#extraGifts {
+
+    width: 280px;
+    min-width: 280px;
+    flex: 0 0 300px;
+
+    display: grid;
+    grid-template-columns: repeat(3, 80px);
+    gap: 20px;
+
+    justify-content: center;
+    align-items: start;
+
+}
+
+#giftMessage:not(.hidden) #extraGifts {
+
+    display: flex;
+
+}
+
+#giftMessage {
+
+    width: 850px;
+    max-width: 90vw;
+    box-sizing: border-box;
+
+}
+
+#heartPopup {
+
+    display: none;
+
+    position: fixed;
+    inset: 0;
+
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    background-image: url("heart-background.jpg");
+    background-size: cover;
+    background-position: center;
+    
+    z-index: 1000;
+
+    opacity: 0;
+    transition: opacity 0.6s ease;
+  
+}
+
+#heartPopup.opening {
+
+    display: flex;
+    opacity: 1;
+
+}
+
+#heartPopup.closing {
+
+    display: flex;
+    opacity: 0;
+
+}
+
+#heartPopup.heartCreation {
+
+    background: white;
+    width: 300px;
+    min-height: 300px;
+    border-radius: 25px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: 25px;
+    box-sizing: border-box;
+
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+
+}
+
+.heartCreation {
+
+    position: relative;
+    width: 1050px;
+    height: 260px;
+    margin: 15px auto;
+
+}
+
+.heartGrid {
+
+    display: grid;
+
+    grid-template-columns: repeat(8, 90px);
+    grid-template-rows: repeat(2, 90px);
+
+    column-gap: 102px;
+    row-gap: 105px;
+
+    width: 1050px;
+    height: 250px;
+
+    justify-content: center;
+    align-content: center;
+
+    transform: translateY(-65px);
+
+}
+
+.heartGrid .heartShape {
+
+    position: relative;
+
+    left: 0;
+    top: 0;
+
+    width: 80px;
+    height: 80px;
+
+    margin: 0;
+  
+}
+
+.heartShape {
+
+    position: relative;
+    width: 60px;
+    height: 60px;
+    background: #ff4f81;
+
+    transform: rotate(-45deg) scale(0);
+
+    animation: 
+        createHeart 1s ease forwards,
+        heartPulse 2s ease-in-out infinite,
+        heartGlow 2s ease-in-out infinite;
+
+    filter: drop-shadow(0 0 8px rgba(255, 70, 130, 0.7))
+            drop-shadow(0 0 18px rgba(255, 100, 160, 0.5));
+
+}
+
+.heartShape:nth-child(1)  { animation-delay: 0s, 0s, 0s; }
+.heartShape:nth-child(2)  { animation-delay: 0s, 0.18s, 0s; }
+.heartShape:nth-child(3)  { animation-delay: 0s, 0.36s, 0s; }
+.heartShape:nth-child(4)  { animation-delay: 0s, 0.54s, 0s; }
+.heartShape:nth-child(5)  { animation-delay: 0s, 0.72s, 0s; }
+.heartShape:nth-child(6)  { animation-delay: 0s, 0.90s, 0s; }
+.heartShape:nth-child(7)  { animation-delay: 0s, 1.08s, 0s; }
+.heartShape:nth-child(8)  { animation-delay: 0s, 1.26s, 0s; }
+
+.heartShape:nth-child(9)  { animation-delay: 0s, 1.44s, 0s; }
+.heartShape:nth-child(10) { animation-delay: 0s, 1.62s, 0s; }
+.heartShape:nth-child(11) { animation-delay: 0s, 1.80s, 0s; }
+.heartShape:nth-child(12) { animation-delay: 0s, 1.98s, 0s; }
+.heartShape:nth-child(13) { animation-delay: 0s, 2.16s, 0s; }
+.heartShape:nth-child(14) { animation-delay: 0s, 2.34s, 0s; }
+.heartShape:nth-child(15) { animation-delay: 0s, 2.52s, 0s; }
+.heartShape:nth-child(16) { animation-delay: 0s, 2.70s, 0s; }
+
+.heartShape::before,
+.heartShape::after {
+
+    content:"";
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background: #ff4f81;
+    border-radius: 50%;
+
+}
+
+.heartShape::before {
+
+    top: -40px;
+    left: 0;
+
+}
+
+.heartShape::after {
+
+    top: 0;
+    left: 40px;
+
+}
+ 
+.heartBurst {
+
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 10;
+
+}
+
+.heartBurst span {
+
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    font-size: 22px;
+    color: #ff4f81;
+    opacity: 0;
+
+    animation: heartBurst 5s ease-out forwards;
+
+}
+
+.heartBurst span:nth-child(1)  { --x: -150px; --y: -120px; }
+.heartBurst span:nth-child(2)  { --x: -100px; --y: -150px; }
+.heartBurst span:nth-child(3)  { --x: -40px;  --y: -170px; }
+.heartBurst span:nth-child(4)  { --x: 40px;   --y: -170px; }
+.heartBurst span:nth-child(5)  { --x: 100px;  --y: -150px; }
+.heartBurst span:nth-child(6)  { --x: 150px;  --y: -100px; }
+.heartBurst span:nth-child(7)  { --x: 170px;  --y: -30px; }
+.heartBurst span:nth-child(8)  { --x: 170px;  --y: 50px; }
+
+.heartBurst span:nth-child(9)  { --x: 130px;  --y: 120px; }
+.heartBurst span:nth-child(10) { --x: 70px;   --y: 170px; }
+.heartBurst span:nth-child(11) { --x: 0px;    --y: 170px; }
+.heartBurst span:nth-child(12) { --x: -70px;  --y: 150px; }
+.heartBurst span:nth-child(13) { --x: -130px; --y: 120px; }
+.heartBurst span:nth-child(14) { --x: -170px; --y: 50px; }
+.heartBurst span:nth-child(15) { --x: -170px; --y: -30px; }
+.heartBurst span:nth-child(16) { --x: -150px; --y: -100px; }
+
+.heartBurst span:nth-child(1) { animation-delay: 0s; }
+.heartBurst span:nth-child(2) { animation-delay: 0.08s; }
+.heartBurst span:nth-child(3) { animation-delay: 0.16s; }
+.heartBurst span:nth-child(4) { animation-delay: 0.24s; }
+.heartBurst span:nth-child(5) { animation-delay: 0.32s; }
+.heartBurst span:nth-child(6) { animation-delay: 0.40s; }
+.heartBurst span:nth-child(7) { animation-delay: 0.48s; }
+.heartBurst span:nth-child(8) { animation-delay: 0.56s; }
+
+.heartBurst span:nth-child(9)  { animation-delay: 0.64s; }
+.heartBurst span:nth-child(10) { animation-delay: 0.72s; }
+.heartBurst span:nth-child(11) { animation-delay: 0.80s; }
+.heartBurst span:nth-child(12) { animation-delay: 0.88s; }
+.heartBurst span:nth-child(13) { animation-delay: 0.96s; }
+.heartBurst span:nth-child(14) { animation-delay: 1.04s; }
+.heartBurst span:nth-child(15) { animation-delay: 1.12s; }
+.heartBurst span:nth-child(16) { animation-delay: 0.20s; }
+
+
+
+@keyframes heartBurst {
+
+    0% {
+
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 0;
+
+    }
+
+    10% {
+
+        transform: translate(-50%, -50%) scale(0.5);
+        opacity: 1;
+
+    }
+
+    25% {
+
+        transform: 
+            translate(
+                calc(-50% + var(--x)),
+                calc(-50% + var(--y))
+
+            )
+
+            scale(1);
+        opacity: 1;
+
+    }
+
+    35% {
+
+        transform:
+            translate(
+                calc(-50% + var(--x)),
+                calc(-50% + var(--y))
+
+            )
+
+            scale(1);
+        opacity: 1;
+
+    }
+
+
+    50% {
+
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 0;
+
+    }
+
+    60% {
+
+        transform: translate(-50%, -50%) scale(0.5);
+        opacity: 1;
+
+    }
+
+    75% {
+
+        transform:
+            translate(
+                calc(-50% + var(--x)),
+                calc(-50% + var(--y))
+
+            )
+            scale(1);
+        opacity: 1;
+
+    }
+
+    90% {
+
+        transform:
+            translate(
+                calc(-50% + var(--x)),
+                calc(-50% + var(--y))
+
+            )
+            scale(0.7);
+        opacity: 0.8;
+
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 0;
+
+    }
+
+}
+
+@keyframes createHeart {
+
+    0% {
+
+        transform: rotate(-45deg) scale(0);
+        opacity: 0;
+
+    }
+
+    60% {
+
+        transform: rotate(-45deg) scale(1.2);
+        opacity: 1;
+
+    }
+
+    100% {
+
+        transform: rotate(-45deg) scale(1);
+        opacity: 1;
+
+    }
+
+}
+
+@keyframes heartPulse {
+
+    0%, 100% {
+
+        transform: rotate(-45deg) scale(1);
+
+    }
+
+    50% {
+
+        transform: rotate(-45deg) scale(1.15);
+
+    }
+
+}
+
+@keyframes floatingHearts {
+
+    0% {
+
+        transform: translateY(25px);
+        opacity: 0;
+
+    }
+
+    50% {
+
+        opacity: 1;
+
+    }
+
+    100% {
+
+        transform: translateY(-35px);
+        opacity: 0;
+
+    }
+
+}
+
+#heartPopup p {
+
+    font-size: 25px;
+    margin-top: 40px;
+    color: #333;
+
+}
+
+@keyframes heartGlow {
+
+    0%, 100% {
+
+        filter: 
+            drop-shadow(0 0 6px rgba(255, 70, 130, 0.5))
+            drop-shadow(0 0 12px rgba(255, 100, 160, 0.3));
+
+    }
+
+    50% {
+
+        filter: 
+            drop-shadow(0 0 14px rgba(255, 70, 130, 0.9))
+            drop-shadow(0 0 30px rgba(255, 100, 160,0.7)); 
+
+    }
+
+}
+
+.miniBurstParticles {
+
+    position: absolute !important;
+    left: 50% !important;
+    top: 50% !important;
+    transform-origin: center;
+    white-space: nowrap;
+    pointer-events: none;
+
+}
+
+.photoGiftCard {
+
+    width: min(9995px, 95vw);
+    height: 700px;
+    padding: 40px 35px 30px;
+
+    background-image: url("photo-background.jpg");
+    background-size: cover;
+    background-position: center; 
+
+    border-radius: 20px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    position: relative;
+    overflow: hidden;
+
+}
+
+.photoGrid {
+
+    position: relative;
+    width: 100%;
+    height: 560px;
+    flex-shrink: 0;
+
+}
+
+.photoFrame {
+
+    position: absolute;
+    box-sizing: border-box;
+    border-radius: 10px;
+    border: 0px solid;
+    overflow: visible;
+
+}
+
+.photoFrame img {
+
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+
+}
+
+.photoOne {
+
+    width: 370px;
+    height: 310px;
+    left: 15px;
+    top: 20px;
+    transform: rotate(-4deg);
+
+}
+
+.photoTwo {
+
+    width: 370px;
+    height: 310px;
+    left: 355px;
+    top: 250px;
+    transform: rotate(3deg);
+
+}
+
+.photoThree {
+
+    width: 370px;
+    height: 310px;
+    right: 350px;
+    top: 15px;
+    transform: rotate(0.5deg);
+
+}
+
+.photoFour {
+
+    width: 370px;
+    height: 310px;
+    right: -10px;
+    top: 210px;
+    transform: rotate(-3deg);
+
+}
+
+.photoPopup .photoGiftCard {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.photoHeart {
+
+    position: absolute;
+    top: -25px;
+    left: -29px;
+    font-size: 45px;
+
+}
+
+.photoSparkle {
+
+    position: absolute;
+    bottom: -20px;
+    right: 47px;
+    font-size: 45px;
+
+}
+
+.photoHeart {
+
+    position: absolute;
+    top: -25px;
+    left: -29px;
+    font-size: 45px;
+
+}
+
+.photoSparkle {
+
+    position: absolute;
+    bottom: -20px;
+    right: 47px;
+    font-size: 45px;
+
+}
+
+.photoHeart {
+
+    position: absolute;
+    top: -25px;
+    left: -29px;
+    font-size: 45px;
+
+}
+
+.photoSparkle {
+
+    position: absolute;
+    bottom: -20px;
+    right: 47px;
+    font-size: 45px;
+
+}
+
+.photoHeart {
+
+    position: absolute;
+    top: -25px;
+    left: -29x;
+    font-size: 45px;
+
+}
+
+.photoSparkle {
+
+    position: absolute;
+    bottom: -20px;
+    right: 47px;
+    font-size: 45px;
+
+}
+
+.photoText {
+
+    margin-top: 40px;
+
+    padding: 18px 25px;
+
+    font-size: 20px;
+    color: #333;
+
+    background: rgba(219, 219, 219, 0.4);
+
+    border-radius: 30px;
+
+    backdrop-filter: blur(2.7px);
+    -webkit-backdrop-filter: blur(2.7px);
+
+    border: 1px solid rgba(255, 255, 255, 0.4);
+
+    box-sizing: border-box;
+
+}
+
+#photoPopup .photoGiftCard {
+
+    animation: photoGiftOpen 0.7s ease-out forwards;
+
+}
+
+@keyframes photoGiftOpen {
+
+    0% {
+        transform: translateY(120px) scale(0.2);
+        opacity: 0;
+
+    }
+
+    60% {
+        transform: translateY(-15px) scale(1.05);
+        opacity: 1;
+
+    }
+
+    80% {
+        transform: translateY(5px) scale(0.98);
+        
+    }
+
+    100% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+
+    }
+
+}
+
+#photoPopup.Closing .photoGiftCard {
+
+    animation: photoGiftClose 0.4s ease-in forwards;
+
+}
+
+@keyframes photoGiftClose {
+
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+
+    }
+
+    60% {
+        transform: translateY(-15px) scale(1.05);
+        opacity: 0.5;
+
+    }
+
+    100% {
+        transform: translateY(120px) scale(0.2);
+        opacity: 0;
+    }
+    
+}
+
+.photoFrame {
+
+    background: transparent !important;
+    box-shadow: none !important;
+
+}
+
+.photoFrame::before,
+.photoFrame::after {
+
+    content: none !important;
+
+}
+
+@keyframes giftPulse {
+
+    0%, 100% {
+
+        transform: scale(1);
+        filter: drop-shadow(0 0 2px rgba(255, 215, 100, 0.25));
+
+    }
+
+    50% {
+
+        transform: scale(1.045);
+        filter: drop-shadow(0 0 20px rgba(255, 215, 100, 0.9));
+
+    }
+
+} 
+
+#particleBackground {
+
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+
+}
+
+.backgroundParticle {
+
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: white;
+    opacity: 0.8;
+    box-shadow: 0 0 15px currentcolor, 0 0 25px currentColor;
+    animation: particleFall 6s linear infinite;
+
+}
+
+@keyframes particleFall {
+
+    0% {
+
+        transform: translateY(0, -10px);
+        opacity: 0;
+
+    }
+
+    10% {
+
+        opacity: 1;
+
+    }
+
+    50% {
+
+        transform: translate(50px, 50vh);
+        opacity: 0.8;
+
+    }
+
+    100% {
+
+        transform: translateY(-40, 100vh);
+        opacity: 0;
+
+    }
+
+}
+
+h1,
+body > button,
+#giftMessage {
+
+    position: relative;
+    z-index: 1;
+
+}
+
+#balloonPopup {
+
+    position: fixed;
+    inset: 0;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(5, 0, 20);
+    z-index: 1000;
+
+}
+
+.balloonArea {
+
+    position: relative;
+    width: 700px;
+    height: 500px;
+    max-width: 90vh;
+
+}
+
+.balloon {
+
+    position: absolute;
+    width: 78px;
+    height: 98px;
+    border-radius: 50% 50% 48% 48%;
+    font-size: 0;
+
+    background: radial-gradient(
+
+        circle at 30% 25%,
+        white 0%,
+        #ff8acb 8%,
+        #ff3d9a 35%,
+        #c21875 75%,
+        #7a104f 100%
+ 
+    );
+
+    box-shadow:
+        inset -10px -12px 18px rgba(0, 0, 0, 0.25),
+        0 0 18px rgba(255, 61, 154, 0.7);
+
+    cursor: pointer;
+    user-select: none;
+    animation: balloonFloat 2.5s ease-in-out infinite;
+
+}
+
+.balloonOne {
+
+    animation-delay: 0s;
+
+}
+
+.balloonTwo {
+
+    animation-delay: 0.3s;
+    
+}
+
+.balloonThree {
+
+    animation-delay: 0s;
+    
+}
+
+.balloonFour {
+
+    animation-delay: 0.3s;
+    
+}
+
+.balloonFive {
+
+    animation-delay: 1s;
+    
+}
+
+.balloonString {
+
+    position: absolute;
+    width: 22px;
+    height: 85px;
+    top: calc(100% - 2px);
+    left: 50%;
+    overflow: visible;
+    transform: translateX(-50%);
+
+}
+
+.balloonOne .balloonString path {
+
+    animation-delay: 0s;
+
+}
+
+.balloonTwo .balloonString path {
+
+    animation-delay: -0.5s;
+    
+}
+
+.balloonThree .balloonString path {
+
+    animation-delay: -1s;
+    
+}
+
+.balloonFour .balloonString path {
+
+    animation-delay: -1.5s;
+    
+}
+
+.balloonFive .balloonString path {
+
+    animation-delay: -2s;
+    
+}
+
+.balloon::before {
+
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 10px;
+    background: #7a104f;
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    border-radius: 4px;
+
+}
+
+
+.balloonString path {
+
+    fill: none;
+    Stroke: #d9d9d9;
+    stroke-width: 1;
+    animation: stringSway 2.5s ease-in-out infinite;
+
+}
+
+
+
+@keyframes stringSway {
+
+    0%, 100% {
+
+        d: path("M10 0 C-2 20, 22 48, 10 75");
+
+    }
+
+    50% {
+
+        d: path("M10 0 C2 20, 28 48, 10 75");
+        
+    }
+
+}
+
+.balloonOne {
+
+    left: 2%;
+    top: 20%;
+
+}
+
+.balloonTwo {
+
+    left: 22%;
+    top: 20%;
+    
+}
+
+.balloonThree {
+
+    left: 42%;
+    top: 20%;
+    
+}
+
+.balloonFour {
+
+    left: 62%;
+    top: 20%;
+    
+}
+
+.balloonFive {
+
+    left: 82%;
+    top: 20%;
+    
+}
+
+@keyframes balloonFloat {
+
+    0%, 100% {
+
+        transform: translateY(0);
+
+    }
+
+    50% {
+
+        transform: translateY(-18px);
+
+    }
+
+}
+
+.balloon.popped {
+
+    animation: balloonPop 0.35s ease forwards;
+
+}
+
+@keyframes balloonPop {
+
+    0% {
+
+        transform: scale(1);
+        opacity: 1;
+
+    }
+
+    60% {
+
+        transform: scale(1.35);
+        opacity: 1;
+
+    }
+
+    100% {
+
+        transform: scale(0);
+        opacity: 0;
+
+    }
+
+}
+
+
+.balloonMessage {
+
+    position: fixed;
+    top: 35%;
+    left: 50%;
+    z-index: 10;
+
+    margin-top: 10px;
+    padding: 15px 25px;
+
+    left: auto;
+    right: auto;
+
+    max-width: 80%;
+    box-sizing: border-box;
+
+    background: #252529;
+    color: white;
+
+    border: 1px solid #ff9a04;
+    border-radius: 5px;
+
+    font-size: 15px;
+    line-height: 1.3;
+    text-align: center;
+
+    box-shadow: 
+        0 0 4px #fad661,
+        0 0 10px #fff654,
+        0 0 15px rgba(238, 235, 11, 0.637);
+
+    animation: messageDrops 0.5s ease forwards;
+
+    opacity: 0;
+    transform: translateY(-40px) scale(0.8);
+    transition: transform 0.5s ease, opacity 0.5s ease;
+
+    transform-origin: top center;
+
+}   
+
+.balloonMessage.show {
+
+    opacity: 1;
+    transform: translateY(0) scale(1);
+
+}
+
+@keyframes messageDrops {
+
+    0% {
+
+        transform: translateY(-30px);
+        opacity: 0;
+
+    }
+
+    100% {
+
+        transform: translateY(0);
+        opacity: 1;
+
+    }
+
+}
+
+.popParticles {
+
+    position: fixed;
+    width: 14px;
+    height: 14px;
+    background: var(--particleColor);
+    clip-path: polygon(
+
+        50% 0%,
+        61% 38%,
+        100% 50%,
+        61% 62%,
+        50% 100%,
+        39% 62%,
+        0% 50%,
+        39% 38%
+
+    );
+
+    box-shadow: 0 0 8px var(--particleColor);
+    pointer-events: none;
+    z-index: 9999;
+
+}
+
+#fourthLetter {
+
+    display: none;
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+
+    width: 420px;
+    min-height: 530px;
+
+    padding: 30px;
+
+    background: #fff8e7;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.073);
+    color: #0c0909;
+    background-image:
+        
+        radial-gradient(
+            rgba(120, 90, 40, 0.06) 1px,
+            transparent 1px
+
+        );
+    
+    background-size: 4px 4px;    
+
+    font-family: "Times New Roman", serif;
+    font-style: italic;
+
+    border: 2px solid #d8b36a;
+    border-radius: 12px;
+
+    overflow: hidden;
+    clip-path: polygon(
+        0 0,
+        calc(100% - 37.5px) 0,
+        100% 37.5px,
+        100% 100%,
+        0 100%
+
+    );
+
+    box-sizing: border-box; 
+    text-align: left;
+
+    z-index: 1000;
+
+}
+
+.letterFlowers {
+
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    width: 145px;
+    height: 148px;
+    object-fit: contain;
+    opacity: 0.95;
+    pointer-events: none;
+    z-index: 3;
+
+}
+
+.letterBouquet {
+
+    position: absolute;
+    right: -25px;
+    bottom: -10px;
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    opacity: 0.95;
+    pointer-events: none;
+    z-index: 3;
+    transform: rotate(0deg);
+
+}
+
+#fourthLetter::before {
+
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 36px;
+    height: 36px;
+    background: transparent;
+    border-left: 2px solid #d8b36a;
+    border-bottom: 2px solid #d8b36a;
+    border-top-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 5px;
+    box-sizing: border-box;
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.55);
+    z-index: 2;
+    pointer-events: none;
+
+}
+
+@keyframes letterSlideIn {
+
+    0% {
+
+        left: calc(50% - 100vw);
+        top: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+
+    }
+
+    100% {
+
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 1;
+        
+    }
+   
+}
+
+#fourthLetter {
+
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+#fourthLetter.unrolling {
+
+    display: block;
+    animation: none;
+
+}
+
+@keyframes letterUnroll{
+
+    0% {
+
+        transform: translate(-50%, -50%) scaleY(0.03);
+        opacity: 1;
+
+    }
+
+    100% {
+
+        transform: translate(-50%, -50%) scaleY(1);
+        opacity: 1;
+
+    }
+
+}
+
+#fourthLetter p {
+
+    color: #0c0909;
+
+}
+
+.miniGift.popOpen {
+
+    animation: giftOpenPop 0.6s ease forwards !important;
+
+}   
+
+@keyframes giftOpenPop {
+
+    0% {
+
+        transform: scale(1);
+
+    }
+
+    35% {
+
+        transform: scale(1.35);
+
+    }
+
+    60% {
+
+        transform: scale(0.9);
+
+    }
+
+    80% {
+
+        transform: scale(1.12);
+
+    }
+
+    100% {
+
+        transform: scale(1);
+
+    }
+
+}
+
+#fourthLetter {
+
+    display: none;
+
+}
+
+#letterBackdrop {
+
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    z-index: 999;
+}
+
+.fifthMessageBox {
+
+    display: none;
+    position: relative;
+    width: 800px;
+    height: 600px;
+    max-width: 90%;
+    padding: 20px;
+    background: #f88cc2;
+    border: 2px solid #d8b36a;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    color: #0f0f0e;
+    text-align: center;
+    font-family: Georgia, serif;
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+#handwrittenName {
+
+    font-family: "Segeo Script", "Brush Script MT", cursive;
+    font-size: 50px;
+    font-weight: normal;
+    color: #7a1745;
+    margin-top: 20px;
+
+}
+
+#writingSvg {
+
+    width: 300px;
+    max-width: 100%;
+    overflow: visible;
+
+}
+
+#writingText {
+
+    fill: none;
+    stroke: #7a1745;
+    stroke-width: 10;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 500;
+    stroke-dashoffset: 500;
+
+}
+
+#writingSvg text {
+
+    font-family: "Sergio Script", "Brush Script MT", cursive;
+    font-size: 60px;
+    font-style: italic;
+    fill: #7a1745;
+    stroke: none;
+
+}
+
+#fourthLetter .paperRoll {
+
+    display: none;
+    position: absolute;
+    top: -12px;
+    left: -2%;
+    width: 104%;
+    height: 30px;
+    z-index: 20;
+    border-radius: 50% / 45%;
+
+    background:
+        
+        radial-gradient(
+
+            ellipse at 50% 20%,
+            #fffdf2 0%,
+            #f8e9c7 25%,
+            #d8bd88 58%,
+            #9e7944 78%,
+            #f7e7c4 100%
+
+        );  
+
+    border: 0.9px solid rgba(133, 98, 48, 0.5);
+
+    
+    box-shadow:
+
+        0 5px 7px rgba(53, 35, 12, 0.3),
+        inset 0 3px 4px rgba(255, 255, 255, 0.85),
+        inset 0 -4px 5px rgba(91, 61, 26, 0.3);
+     
+    box-sizing: border-box;    
+
+}
+
+#fourthLetter.unrolling .paperRoll {
+
+    display: block;
+    animation: rollDown 1.3s ease-out forwards;
+
+}
+
+@keyframes rollDown {
+
+    from {
+
+        top: 0;
+
+    }
+
+    to {
+
+        top: calc(100% - 18px);
+
+    }
+
+}
+
+#fourthLetter .paperReveal {
+
+    position: relative;
+    width: 100%;
+    height: 100%;
+    clip-path: inset(0 0 100% 0);
+
+}
+
+#fourthLetter.unrolling .paperReveal {
+
+    animation: revealPaper 1.3s linear forwards;
+
+}
+
+@keyframes revealPaper {
+
+    from {
+
+        clip-path: inset(0 0 100% 0);
+
+    }
+
+    to {
+
+        clip-path: inset(0 0 0 0);
+
+    }
+
+}
+
+#fourthLetter {
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transform-origin: center;
+
+}
+
+/* Stage 1: slide the rolled letter in */
+
+#fourthLetter.opening {
+
+    display: block;
+    height: 35px;
+    min-height: 35px;
+    padding: 0;
+    overflow: hidden;
+
+    background: linear-gradient(
+
+        to bottom,
+        #fffd5f,
+        #e8d4a8,
+        #fff5dc,
+        #c5a36a
+
+    );
+
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.25);
+    animation: letterSlideIn 1s ease-out forwards;
+
+}
+
+/* Keep the letter rolled after sliding in */
+
+#fourthLetter.rolled {
+
+    height: 35px;
+    min-height: 35px;
+    padding: 0;
+    overflow: hidden;
+
+}
+
+#fourthLetter.opening .paperReveal {
+
+    visibility: hidden;
+    
+}
+
+#fourthLetter.opening .paperRoll {
+
+    display: block;
+    top: 0;
+    height: 35px;
+     
+}
+
+@keyframes letterSlideIn {
+
+    from {
+
+        left: -220%;
+        opacity: 0;
+        transform: translateY(-50%);
+
+    }
+
+    to {
+
+        left: 50%;
+        opacity: 1;
+        transform: translate(-50%, -50%);
+
+    }
+
+}
+
+/* Stage 2: button fades in after the slide */
+
+
+@keyframes buttonFadeIn {
+
+    from {
+
+        opacity: 0;
+        transform: translate(-50%, 10px);
+
+    }
+
+    to {
+
+        opacity: 1;
+        transform: translate(-50%, 0);
+
+    }
+
+}
+
+/* Stage 3: reveal the paper from top to bottom */
+
+#fourthLetter .paperReveal {
+
+    position: relative;
+    width: 100%;
+    height: 100%;
+    clip-path: inset(0 0 100% 0);
+
+}
+
+#fourthLetter.unrolling .paperReveal {
+
+    animation: revealPaper 1.3s linear forwards;
+
+}
+
+@keyframes revealPaper {
+
+    from {
+
+        clip-path: inset(0 0 100% 0);
+
+    }
+
+    to {
+
+        clip-path: inset(0 0 0 0);
+
+    }
+
+}
+
+/* The rolled edge follows the revealing paper */
+
+#fourthLetter .paperRoll {
+
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 105%;
+    height: 30px;
+    z-index: 20;
+    border-radius: 25px;
+    background: linear-gradient(
+
+        to bottom,
+        #fffdf2 0%,
+        #f8e9c7 35%,
+        #c6a56c 75%,
+        #fff0cd 100%
+
+    );
+
+    border: 1px solid #b99a62;
+    box-shadow: 0 4px 7px rgba(0, 0, 0, 0.25);
+    box-sizing: border-box;
+
+}
+
+#fourthLetter.unrolling .paperRoll {
+
+    display: block;
+    animation: rollDown 1.3s linear forwards;
+
+}
+
+@keyframes rollDown {
+
+    from {
+
+        top: 0;
+
+    }
+
+    to {
+
+        top: calc(100% - 30px);
+    }
+    
+}
+
+
+/* ====== FOURTH GIFT: UNROLL BUTTON FIX ====== */
+
+
+@keyframes buttonFadeIn {
+
+    from {
+
+        opacity: 0;
+        transform: translate(-50%, 10px);
+
+    }
+
+    to {
+
+        opacity: 1;
+        transform: translate(-50%, 0);
+
+    }
+
+}
+
+/* Keep the fourth letter rolled until clicked */
+#fourthLetter.rolled {
+
+    display: block;
+    height: 35px;
+    min-height: 35px;
+    padding: 0;
+    overflow: hidden;
+
+}
+
+/* Hide the written paper while the letter is rolled */
+
+#fourthLetter.rolled .paperReveal {
+
+    visibility: hidden;
+
+}
+
+/* Show the rolled-paper strip */
+#fourthLetter.rolled .paperRoll {
+
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 35px;
+
+}
+
+/* Simple rolled-letter starting state */
+
+#fourthLetter.rolled {
+
+    display: block;
+    height: 35px;
+    min-height: 35px;
+    padding: 0;
+    overflow: hidden;
+
+}
+
+/*Hide the paper until the unroll begins */
+
+#fourthLetter.rolled .paperReveal {
+
+    visibility: hidden;
+
+}
+
+/* Show the rolled edge */
+
+#fourthLetter.rolled .paperRoll {
+
+    display: block;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 35px;
+
+}
+
+#unrollingLetterButton {
+
+    display: none;
+    position: fixed;
+    top: calc(50% + 65px);
+    left: 50%;
+    transform: translateX(-50%);
+
+    margin: 0;
+    padding: 12px 24px;
+
+    background: #fff1d6;
+    color: #754a2b;
+    border: 1px solid #c69b59;
+    border-radius: 25px;
+
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 15px;
+    white-space: nowrap;
+    cursor: pointer;
+
+    z-index: 10001;
+
+}
+
+#unrollingLetterButton.fadeIn {
+
+    display: block;
+    animation: buttonFadeIn 0.7s ease forwards;
+
+}
+
+@keyframes buttonFadeIn {
+
+    from {
+
+        opacity: 0;
+        transform: translate(-50%, 10px);
+
+    }
+
+    to {
+
+        opacity: 1;
+        transform: translate(-50%, 0);
+
+    }
+    
+}
+
+/* Keep the roll visible only while the letter is unrolling */
+#fourthLetter.unrolling .paperRoll {
+
+    display: block;
+    animation: rollDown 1.3s ease-out forwards;
+
+}
+
+/* Hide the roll after the unrolling animation finishes */
+#fourthLetter.unrolled .paperRoll {
+
+    display: none;
+
+}
+
+#fourthLetter.unrolled .paperRoll {
+
+    display: none !important;
+    animation: none;
+
+}
+
+#fourthLetter .letterBouquet,
+#fourthLetter .letterFlower {
+
+    object-fit: contain;
+    transform-origin: center center;
+
+}
+
+/* Fix: reveal the paper from top to bottom */
+#fourthLetter .paperReveal {
+
+    clip-path: inset(0 0 100% 0);
+
+}
+
+#fourthLetter.unrolling .paperReveal {
+
+    visibility: visible;
+    animation: revealPaper 1.3s linear forwards !important;
+
+}
+
+@keyframes revealPaper {
+
+    from {
+
+        clip-path: inset(0 0 100% 0);
+
+    }
+
+    to {
+
+        clip-path: inset(0 0 0 0);
+    }
+
+}
+
+/* Fourth gift: synchronize paper and rolling edge */
+#fourthLetter.unrolling {
+
+    animation: none !important;
+
+}
+
+#fourthLetter .paperReveal {
+
+    clip-path: inset(0 0 100% 0);
+
+}
+
+#fourthLetter.unrolling .paperReveal {
+
+    animation: revealPaper 1.3s linear forwards !important;
+
+}
+
+#fourthLetter.unrolling .paperRoll {
+
+    display: block;
+    animation: rollDown 1.3s linear forwards !important;
+
+}
+
+#fourthLetter.unrolled .paperReveal {
+
+    clip-path: inset(0 0 0 0);
+    animation: none;
+
+}
+
+#fourthLetter.unrolled .paperRoll {
+
+    display: none !important;
+    animation: none;
+
+}
+
+/* ===== FOURTH GIFT: CLEAN UNROLL ANIMATION FIX ===== */
+
+#fourthLetter.unrolling {
+    display: block !important;
+    height: 530px !important;
+    min-height: 530px !important;
+    padding: 30px !important;
+    overflow: hidden !important;
+    animation: none !important;
+}
+
+/* The paper starts completely hidden */
+#fourthLetter .paperReveal {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    clip-path: inset(0 0 100% 0);
+    visibility: visible;
+}
+
+/* Reveal the paper gradually from top to bottom */
+#fourthLetter.unrolling .paperReveal {
+    animation: fourthPaperReveal 1.3s linear forwards !important;
+}
+
+/* The rolled edge follows the reveal */
+#fourthLetter.unrolling .paperRoll {
+    display: block !important;
+    position: absolute;
+    top: 0;
+    left: -2%;
+    width: 104%;
+    height: 30px;
+    z-index: 20;
+    animation: fourthRollDown 1.3s linear forwards !important;
+}
+
+@keyframes fourthPaperReveal {
+    from {
+        clip-path: inset(0 0 100% 0);
+    }
+    to {
+        clip-path: inset(0 0 0 0);
+    }
+}
+
+@keyframes fourthRollDown {
+    from {
+        top: 0;
+    }
+    to {
+        top: calc(100% - 30px);
+    }
+}
+
+/* Keep the entire letter revealed when the animation finishes */
+#fourthLetter.unrolled .paperReveal {
+    clip-path: inset(0 0 0 0) !important;
+    animation: none !important;
+    visibility: visible !important;
+}
+
+#fourthLetter.unrolled .paperRoll {
+    display: none !important;
+    animation: none !important;
+}
